@@ -1,16 +1,19 @@
-const main = document.getElementById("main");
-const btn = document.getElementById("btn");
-const num = document.getElementById("num");
-const guess = Number(document.getElementById("guess").value);
-
-btn.addEventListener("click", function() {
-  const randomNumber = Math.floor(Math.random() * 41) - 20;
-  num.textContent = randomNumber;
-	if((guess-randomNumber)<=5){
-		document.getElementById("respond").innerText="Hot";
+var randomNum;
+var input;
+function randomNumGenerator(){
+	randomNum = Math.floor(Math.random()*41) - 20;
+	document.getElementById("num").innerHTML = randomNum;
+	guessName();
+	print();
+}
+function guessName() {
+	input = parseInt(document.getElementById("guess").value);	
+}
+function print(){
+	if(Math.abs(randomNum - input) <= 5){
+		document.getElementById("respond").innerHTML = "Hot";
 	}
 	else{
-		document.getElementById("respond").innerText="Cold";
-		
+		document.getElementById("respond").innerHTML = "Cold";
 	}
-});
+}
